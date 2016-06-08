@@ -17,6 +17,7 @@ var height = galaxy.height;
 
 	function anim(){
 		ctx.clearRect(0,0,width,height);
+		backGround.bg(ctx,width,height);
 		rounds.move(ctx,width,height);
 		window.requestAnimationFrame(arguments.callee);
 	}

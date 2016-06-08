@@ -63,6 +63,7 @@
 
 		function anim(){
 			ctx.clearRect(0,0,width,height);
+			backGround.bg(ctx,width,height);
 			rounds.move(ctx,width,height);
 			window.requestAnimationFrame(arguments.callee);
 		}
@@ -83,7 +84,9 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
+
+	var roundsData = __webpack_require__(6);
 
 	var backGround = {
 		"bg":function(ctx,width,height){
@@ -91,6 +94,24 @@
 			ctx.save();
 			ctx.fillStyle = "#eaeaea";
 			ctx.fillRect(0,0,width,height);
+			ctx.strokeStyle = "#BFBFBF";
+			ctx.beginPath();
+			ctx.arc(width/2,height/2,roundsData.r-50,0,2*Math.PI);
+			ctx.closePath();
+			ctx.stroke();
+			ctx.font="30px Verdana";
+			ctx.fillStyle = roundsData.colors[0];
+			ctx.fillText('L',width/2-60,height/2);
+			ctx.fillStyle = roundsData.colors[1];
+			ctx.fillText('A',width/2-40,height/2);
+			ctx.fillStyle = roundsData.colors[2];
+			ctx.fillText('K',width/2-20,height/2);
+			ctx.fillStyle = roundsData.colors[3];
+			ctx.fillText('E',width/2,height/2);
+			ctx.fillStyle = roundsData.colors[4];
+			ctx.fillText('J',width/2+20,height/2);
+			ctx.fillStyle = roundsData.colors[5];
+			ctx.fillText('S',width/2+40,height/2);
 			ctx.restore();
 		}
 	}
@@ -114,7 +135,6 @@
 				var distance = Math.random()*(roundsData.R-roundsData.r) + roundsData.r;
 				round.born(ctx,distance,0,roundsData.roundR,colors[tempNum],deg);  //给出点的坐标位置
 				var speed = 1/distance*(Math.random()*(roundsData.roundsHighSpeed-roundsData.roundsLowSpeed)+roundsData.roundsLowSpeed);
-				
 				var newRound = new Object();
 				newRound.distance = distance;
 				newRound.color = colors[tempNum];
@@ -156,7 +176,7 @@
 /***/ function(module, exports) {
 
 	var roundsData = {
-		"colors":['#FF6A6A','#B0E0E6','#FF7F24','#836FFF','#A8A8A8','#EEEE00'],
+		"colors":['#FF6A6A','#B0E0E6','#FF7F24','#836FFF','#EE7621','#A8A8A8'],
 		"roundNum":140,
 		"roundR":7,
 		"rounds":[],

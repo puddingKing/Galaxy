@@ -12,7 +12,6 @@ var rounds = {
 			var distance = Math.random()*(roundsData.R-roundsData.r) + roundsData.r;
 			round.born(ctx,distance,0,roundsData.roundR,colors[tempNum],deg);  //给出点的坐标位置
 			var speed = 1/distance*(Math.random()*(roundsData.roundsHighSpeed-roundsData.roundsLowSpeed)+roundsData.roundsLowSpeed);
-			
 			var newRound = new Object();
 			newRound.distance = distance;
 			newRound.color = colors[tempNum];
